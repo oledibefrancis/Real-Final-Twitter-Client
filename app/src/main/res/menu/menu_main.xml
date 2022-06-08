@@ -6,6 +6,9 @@
         android:id="@+id/compose"
         android:icon="@android:drawable/ic_menu_edit"
         android:title="Compose"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        />
+
+
 
 </menu>

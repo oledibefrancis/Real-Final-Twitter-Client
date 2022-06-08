@@ -45,11 +45,11 @@ public class ComposeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String tweetContent = etCompose.getText().toString();
                 if (tweetContent.isEmpty()){
-                    Toast.makeText(ComposeActivity.this, "Sorry, your tweet cannont be empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ComposeActivity.this, "Sorry, your tweet can not be empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (tweetContent.length()>MAX_TWEET_LENGTH){
-                    Toast.makeText(ComposeActivity.this, "Sorry, you r tweet is to long", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ComposeActivity.this, "Sorry, your tweet is to long", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Toast.makeText(ComposeActivity.this, tweetContent, Toast.LENGTH_LONG).show();
@@ -57,10 +57,10 @@ public class ComposeActivity extends AppCompatActivity {
                 client.publishTweet(tweetContent, new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Headers headers, JSON json) {
-                        Log.i(TAG, "onSuccess to publish Tweet");
+                        Log.i(TAG, "onSuccess to publish Tweet");//log statement
                         try {
                             Tweet tweet = Tweet.fromJson(json.jsonObject);
-                            Log.i(TAG,"Published tweet says:" + tweet.body);
+                            Log.i(TAG,"Published tweet says:" + tweet.body);//
                             Intent intent = new Intent();
                             intent.putExtra("tweet", Parcels.wrap(tweet));
                             //set result code and bundle for response
