@@ -2,12 +2,6 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/compose"
-        android:icon="@android:drawable/ic_menu_edit"
-        android:title="Compose"
-        app:showAsAction="always"
-        />
 
     <item
         android:id="@+id/logout"
@@ -15,6 +9,14 @@
         android:title="LogOut"
         app:showAsAction="always"
         />
+
+    <item
+        android:id="@+id/miActionProgress"
+        android:title="Loading..."
+        android:visible="false"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        app:actionLayout="@layout/item_tweet" />
 
 
 

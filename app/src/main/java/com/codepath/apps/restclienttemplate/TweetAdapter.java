@@ -119,7 +119,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
 
             }
             else {
-                contentImage.setVisibility(View.INVISIBLE);
+                contentImage.setVisibility(View.GONE);
             }
         }
 

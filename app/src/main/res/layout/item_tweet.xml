@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
    >
+-->
 
     <ImageView
         android:id="@+id/ivProfileImage"
@@ -60,7 +61,7 @@
         android:layout_height="25dp"
         android:layout_below="@+id/contentImage"
         android:layout_marginStart="22dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/ivProfileImage"
         app:srcCompat="@drawable/vector_compose_dm_fab"
         tools:srcCompat="@tools:sample/avatars" />
@@ -71,7 +72,7 @@
         android:layout_height="25dp"
         android:layout_below="@+id/contentImage"
         android:layout_marginStart="22dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/commentIcon"
         app:srcCompat="@drawable/ic_vector_retweet_stroke"
         tools:srcCompat="@tools:sample/avatars" />
@@ -82,9 +83,16 @@
         android:layout_height="25dp"
         android:layout_below="@+id/contentImage"
         android:layout_marginStart="22dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/retweetIcon"
         app:srcCompat="@drawable/ic_vector_heart_stroke"
         tools:srcCompat="@tools:sample/avatars" />
+    <TextView
+        android:id="@+id/custom_font"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoLink="all"
+        android:linksClickable="true"
+        />
 
 </RelativeLayout>

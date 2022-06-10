@@ -39,6 +39,7 @@ public class TimelineActivity extends AppCompatActivity {
     List<Tweet> tweets;
     TweetAdapter adapter;
     private final int REQUEST_CODE = 20;
+    MenuItem miActionProgressItem;
 
     public static final String TAG = "TimeLineActivity";
     private SwipeRefreshLayout swipeContainer;
@@ -86,6 +87,16 @@ public class TimelineActivity extends AppCompatActivity {
         return true ;
         }
 
+
+        public void onCompose(View v){
+
+                //navigate to the compose activity
+                Intent intent = new Intent(this, ComposeActivity.class);
+                startActivityForResult(intent,REQUEST_CODE);
+
+            }
+
+
     //
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -94,14 +105,17 @@ public class TimelineActivity extends AppCompatActivity {
             onLogoutButton();
             return true;
         }
-        if(item.getItemId()==R.id.compose){
-            //navigate to the compose activity
-            Intent intent = new Intent(this, ComposeActivity.class);
-            startActivityForResult(intent,REQUEST_CODE);
-            return true;
 
-        }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // Store instance of the menu item containing progress
+        miActionProgressItem = menu.findItem(R.id.miActionProgress);
+
+        // Return to finish
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -181,5 +195,15 @@ public class TimelineActivity extends AppCompatActivity {
 
     public void onClick(View view) {
         onLogoutButton();
+    }
+
+    public void showProgressBar() {
+        // Show progress item
+        miActionProgressItem.setVisible(true);
+    }
+
+    public void hideProgressBar() {
+        // Hide progress item
+        miActionProgressItem.setVisible(false);
     }
 }

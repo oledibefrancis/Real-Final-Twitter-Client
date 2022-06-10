@@ -14,6 +14,8 @@
         android:layout_margin="16dp"
         android:src="@drawable/ic_vector_compose"
         app:layout_anchor="@id/rvTweets"
+        android:onClick="onCompose"
+        android:backgroundTint="@color/twitterBlue"
         app:layout_anchorGravity="bottom|right|end" />
 
 
