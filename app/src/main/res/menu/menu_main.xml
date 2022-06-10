@@ -9,6 +9,13 @@
         app:showAsAction="always"
         />
 
+    <item
+        android:id="@+id/logout"
+        android:icon="@android:drawable/ic_menu_set_as"
+        android:title="LogOut"
+        app:showAsAction="always"
+        />
+
 
 
 </menu>
