@@ -46,7 +46,7 @@ The following *additional* features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
-
+<img src = "https://github.com/oledibefrancis/Real-Final-Twitter-Client/blob/master/OuaaBbQN.gif", width = 250/>
 
 ## Notes
 
