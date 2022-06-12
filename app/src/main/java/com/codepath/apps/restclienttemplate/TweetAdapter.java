@@ -1,6 +1,8 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.codepath.apps.restclienttemplate.models.Tweet;
+
+import org.parceler.Parcels;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -91,12 +95,18 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView ivProfileImage;
         TextView tvBody;
         TextView tvScreenName;
         ImageView contentImage;
         TextView lastSeen;
+        ImageView commentIcon;
+        ImageView likeIcon;
+        ImageView likeIconHolder;
+        TextView likesCount;
+        String username;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -105,24 +115,63 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
             contentImage = itemView.findViewById(R.id.contentImage);
             lastSeen = itemView.findViewById(R.id.time);
+            commentIcon = itemView.findViewById(R.id.commentIcon);
+            likeIconHolder = itemView.findViewById(R.id.likeIconHolder);
+            likeIcon = itemView.findViewById(R.id.likeIcon);
+            itemView.setOnClickListener(this);
         }
 
         public void bind(Tweet tweet) {
             tvBody.setText(tweet.body);
             tvScreenName.setText(tweet.user.screenName);
             lastSeen.setText(getRelativeTimeAgo(tweet.createdAt));
-            Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
+            username = tweet.user.screenName;
+            Glide.with(context).load(tweet.user.profileImageUrl).circleCrop().into(ivProfileImage);
             if (tweet.imageurl != ""){
                 contentImage.setVisibility(View.VISIBLE);
                 Glide.with(context).load(tweet.imageurl).into(contentImage);
-                Glide.with(context).load(tweet.imageurl).transform(new RoundedCorners(60)).into(ivProfileImage);//implements rounded profile image
-
             }
             else {
                 contentImage.setVisibility(View.GONE);
             }
+
+            commentIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context,CommentActivity.class);
+                    intent.putExtra("key",username);
+                    context.startActivity(intent);
+                }
+            });
+            likeIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    likeIcon.setVisibility(View.VISIBLE);
+                    likeIconHolder.setVisibility(View.GONE);
+
+                }
+            }
+            );
+
+            likeIconHolder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                        likeIconHolder.setVisibility(View.GONE);
+                    likeIcon.setVisibility(View.VISIBLE);
+                }
+            });
         }
 
+        @Override
+        public void onClick(View view) {
+            int postion = getAdapterPosition();
+            if (postion != RecyclerView.NO_POSITION){
+                Tweet tweet = tweets.get(postion);
+                Intent intent = new Intent(context, TweetDetail.class);
+                intent.putExtra(Tweet.class.getSimpleName(), Parcels.wrap(tweet));
+                context.startActivity(intent);
+            }
+        }
     }
     // Clean all elements of the recycler
     public void clear() {

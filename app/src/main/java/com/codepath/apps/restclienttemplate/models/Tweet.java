@@ -20,7 +20,8 @@ public class Tweet {
     public String createdAt;
     public User user;
     public String imageurl;
-//    public String time;
+
+
 
     public Tweet() {
     }
@@ -29,8 +30,8 @@ public class Tweet {
         Tweet tweet = new Tweet();
         tweet.createdAt=jsonObject.getString("created_at");
         tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
-       // tweet.time = tweet.getRelativeTimeAgo(tweet.createdAt);
         tweet.imageurl ="";
+
 
 
         if(jsonObject.has("full_text")) {

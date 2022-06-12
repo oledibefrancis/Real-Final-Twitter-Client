@@ -3,9 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-   >
--->
+    android:layout_height="match_parent"
+    android:background="#14171A"
+
+    >
+    -->
 
     <ImageView
         android:id="@+id/ivProfileImage"
@@ -31,8 +33,8 @@
         android:layout_below="@+id/tvScreenName"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
-        android:layout_toEndOf="@+id/ivProfileImage"
         android:autoLink="all"
+        android:layout_toEndOf="@+id/ivProfileImage"
         android:text="This is my tweet!" />
 
     <ImageView
@@ -65,28 +67,18 @@
         android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/ivProfileImage"
         app:srcCompat="@drawable/vector_compose_dm_fab"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/avatars"
+        />
 
     <ImageView
         android:id="@+id/retweetIcon"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@+id/contentImage"
-        android:layout_marginStart="107dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="4dp"
         android:layout_toEndOf="@+id/commentIcon"
         app:srcCompat="@drawable/ic_vector_retweet_stroke"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <ImageView
-        android:id="@+id/likeIconHolder"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_below="@+id/contentImage"
-        android:layout_marginStart="135dp"
-        android:layout_marginTop="0dp"
-        android:layout_toEndOf="@+id/retweetIcon"
-        app:srcCompat="@drawable/ic_vector_heart_stroke"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
@@ -94,20 +86,18 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@+id/contentImage"
-        android:layout_marginStart="135dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="-3dp"
         android:layout_toEndOf="@+id/retweetIcon"
-        app:srcCompat="@drawable/ic_vector_heart"
-        android:visibility="invisible"
+        app:srcCompat="@drawable/ic_vector_heart_stroke"
         tools:srcCompat="@tools:sample/avatars" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/custom_font"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:autoLink="all"-->
-<!--        android:linksClickable="true"-->
-<!--        />-->
-
+    <TextView
+        android:id="@+id/custom_font"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoLink="all"
+        android:linksClickable="true"
+        />
 
 </RelativeLayout>

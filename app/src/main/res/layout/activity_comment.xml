@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#14171A"
+        tools:context=".CommentActivity">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:counterEnabled="true"
+        app:counterMaxLength="100">
+
+
+        <EditText
+            android:id="@+id/etReply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="1dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Tweet your Reply?"
+            android:textColorHint="@color/cardview_light_background"
+            android:inputType="textMultiLine"
+            android:minLines="6"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            tools:layout_marginStart="5dp"
+
+            />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/replyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="2dp"
+        android:text="Replying to"
+        android:textSize="12sp"
+      />
+
+    <TextView
+        android:id="@+id/replyUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Username"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="2dp"
+        android:textSize="12sp"
+        android:textColor="@color/twitterBlue"
+        />
+
+    <Button
+        android:id="@+id/replyTweet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textInput"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="#ff1da1f2"
+        android:text="@string/tweet" />
+
+    </RelativeLayout>
+
+
+

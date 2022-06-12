@@ -3,6 +3,7 @@ package com.codepath.apps.restclienttemplate;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -50,6 +51,7 @@ public class TimelineActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
+
         swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
         client = TwitterApp.getRestClient(this);
         //Find the recycler view
@@ -66,10 +68,8 @@ public class TimelineActivity extends AppCompatActivity {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                // Your code to refresh the list here.
-                // Make sure you call swipeContainer.setRefreshing(false)
-                // once the network request has completed successfully.
                 fetchTimelineAsync(0);
+                showProgressBar();
             }
         });
         //configuring the refresh colors
@@ -79,7 +79,9 @@ public class TimelineActivity extends AppCompatActivity {
                 android.R.color.holo_red_light);
     }
 
-    
+
+
+
     //
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -89,9 +91,7 @@ public class TimelineActivity extends AppCompatActivity {
 
 
         public void onCompose(View v){
-
-                //navigate to the compose activity
-                Intent intent = new Intent(this, ComposeActivity.class);
+         Intent intent = new Intent(this, ComposeActivity.class);
                 startActivityForResult(intent,REQUEST_CODE);
 
             }
@@ -156,11 +156,7 @@ public class TimelineActivity extends AppCompatActivity {
             }
         });
     }
-    //handles the API call for the refresh button
     public void fetchTimelineAsync(int page) {
-        // Send the network request to fetch the updated data
-        // `client` here is an instance of Android Async HTTP
-        // getHomeTimeline is an example endpoint.
         client.getHomeTimeLine(new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Headers headers, JSON json) {
@@ -169,6 +165,7 @@ public class TimelineActivity extends AppCompatActivity {
                 adapter.addAll(tweets);
                 populateHomeTimeline();
                 swipeContainer.setRefreshing(false);
+                hideProgressBar();
             }
 
             @Override
@@ -181,8 +178,6 @@ public class TimelineActivity extends AppCompatActivity {
         });
     }
     private void onLogoutButton() {
-        //finish();
-        // forget who's logged in
         TwitterApp.getRestClient(this).clearAccessToken();
 
         // navigate backwards to Login screen
@@ -192,18 +187,12 @@ public class TimelineActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-
-    public void onClick(View view) {
-        onLogoutButton();
-    }
-
     public void showProgressBar() {
-        // Show progress item
         miActionProgressItem.setVisible(true);
     }
 
     public void hideProgressBar() {
-        // Hide progress item
         miActionProgressItem.setVisible(false);
     }
+
 }
