@@ -49,7 +49,7 @@ Here's a walkthrough of implemented user stories:
 
 
 
-<img src='https://github.com/oledibefrancis/Twitter/blob/master/MgIrSFjr.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/oledibefrancis/TwitterClient/blob/master/xqp0zW-k.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ## Notes
 
